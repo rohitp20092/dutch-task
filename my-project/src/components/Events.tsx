@@ -1,12 +1,15 @@
 import React from "react";
+//Next
 import Image from "next/image";
-import eventImg1 from "../../assets/eventImage.gif";
-import eventImg2 from "../../assets/eventImage2.gif";
+//components
+import OverView from "@components/components/OverView";
 import Calendar from "@components/common/Icons/Calendar";
-import OverView from "./OverView";
 import BarChart from "@components/common/Icons/BarChart";
 import Check from "@components/common/Icons/Check";
 import Clock from "@components/common/Icons/Clock";
+//image
+import eventImg1 from "../../assets/eventImage.gif";
+import eventImg2 from "../../assets/eventImage2.gif";
 
 const Events: React.FC = () => {
   return (

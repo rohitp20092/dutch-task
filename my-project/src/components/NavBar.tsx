@@ -1,13 +1,17 @@
 import React from "react";
+
+//next
 import Image from "next/image";
-import logoImg from "../../assets/logo.svg";
-import Card from "./Card";
+//components
+import Card from "@components/components/Card";
 import Bell from "@components/common/Icons/Bell";
 import Folder from "@components/common/Icons/Folder";
 import User from "@components/common/Icons/User";
 import Search from "@components/common/Icons/Search";
+//image
+import logoImg from "../../assets/logo.svg";
 
-const NavBar = () => {
+const NavBar:React.FC = () => {
   return (
     <div className="container mx-auto flex flex-col bg-white border-b shadow-black p-10">
       <nav className="w-full h-[60px] bg-[#fff] p-[10px]">

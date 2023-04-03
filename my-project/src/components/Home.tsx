@@ -1,6 +1,7 @@
 import React from "react";
-import Events from "./Events";
-import NavBar from "./NavBar";
+//components
+import Events from "@components/components/Events";
+import NavBar from "@components/components/NavBar";
 
 const Home = () => {
   return (

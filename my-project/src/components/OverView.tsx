@@ -1,8 +1,45 @@
 import React from "react";
-//components
 import Arrow from "@components/common/Icons/Arrow";
+import { nftItems, savedSearches, recentActivity } from "../utils/constants";
 
-const OverView = () => {
+interface OverviewItemType {
+  label: string;
+  value: number | string;
+}
+
+interface OverviewItemProps extends OverviewItemType {}
+
+const OverviewItem: React.FC<OverviewItemProps> = ({ label, value }) => {
+  return (
+    <div className="w-full flex justify-between items-center px-5 py-4">
+      <div>{label}</div>
+      <div>
+        {value !== null ? value : "-"}
+        <button className="ml-3">
+          <Arrow />
+        </button>
+      </div>
+    </div>
+  );
+};
+
+interface OverviewSectionProps {
+  title: string;
+  items: OverviewItemType[];
+}
+
+const OverviewSection: React.FC<OverviewSectionProps> = ({ title, items }) => {
+  return (
+    <div className="border rounded-md w-full bg-white flex flex-col items-center my-5">
+      <h4 className="text-xl font-medium px-5 py-3 w-full">{title}</h4>
+      {items.map((item) => (
+        <OverviewItem key={item.label} {...item} />
+      ))}
+    </div>
+  );
+};
+
+const Overview: React.FC = () => {
   return (
     <div>
       <h5 className="text-2xl text-slate-400">Overview</h5>
@@ -15,79 +52,11 @@ const OverView = () => {
           </button>
         </div>
       </div>
-      <div className="border rounded-md w-full bg-white flex flex-col items-center my-5">
-        <h4 className="text-xl font-medium px-5 py-3 w-full">NFTs</h4>
-        <div className="w-full flex justify-between items-center px-5 py-4">
-          <div>NFT items</div>
-          <div>
-            187
-            <button className="ml-3">
-              <Arrow />
-            </button>
-          </div>
-        </div>
-        <div className="w-full flex justify-between items-center px-5 py-4">
-          <div>Collections</div>
-          <div>
-            5
-            <button className="ml-3">
-              <Arrow />
-            </button>
-          </div>
-        </div>
-        <div className="w-full flex justify-between items-center px-5 py-4">
-          <div>Minted</div>
-          <div>
-            39
-            <button className="ml-3">
-              <Arrow />
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className="border rounded-md w-full bg-white flex flex-col items-center my-5">
-        <h4 className="text-xl font-medium px-5 py-3 w-full">Saved Searches</h4>
-        <div className="w-full flex justify-between items-center px-5 py-4">
-          <div>Green apple</div>
-          <div>
-            187
-            <button className="ml-3">
-              <Arrow />
-            </button>
-          </div>
-        </div>
-        <div className="w-full flex justify-between items-center px-5 py-4">
-          <div>Christmas tree</div>
-          <div>
-            <button className="ml-3">
-              <Arrow />
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className="border rounded-md w-full bg-white flex flex-col items-center my-5">
-        <h4 className="text-xl font-medium px-5 py-3 w-full">
-          Recent Activity
-        </h4>
-        <div className="w-full flex justify-between items-center px-5 py-4">
-          <div>Settings &#62; Account</div>
-          <div>
-            <button className="ml-3">
-              <Arrow />
-            </button>
-          </div>
-        </div>
-        <div className="w-full flex justify-between items-center px-5 py-4">
-          <div>Sales reports</div>
-          <div>
-            <button className="ml-3">
-              <Arrow />
-            </button>
-          </div>
-        </div>
-      </div>
+      <OverviewSection title="NFTs" items={nftItems} />
+      <OverviewSection title="Saved Searches" items={savedSearches} />
+      <OverviewSection title="Recent Activity" items={recentActivity} />
     </div>
   );
 };
 
-export default OverView;
+export default Overview;

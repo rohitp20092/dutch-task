@@ -5,7 +5,7 @@ import React from "react";
 
 const OverviewItem: React.FC<OverviewItemProps> = ({ label, value }) => {
   return (
-    <div className="w-full flex justify-between items-center px-5 py-4">
+    <div className="w-full flex justify-between items-center px-5 py-3 text-gray-500 text-sm">
       {label}
       <div>
         {value !== null ? value : "-"}

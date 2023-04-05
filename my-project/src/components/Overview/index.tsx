@@ -11,14 +11,14 @@ const OverviewCard: React.FC = () => {
   return (
     <div>
       <h5 className="text-2xl text-slate-400">Overview</h5>
-      <div className="border h-12 rounded-md w-full bg-white flex justify-between items-center p-5 mt-5">
+      <div className="border h-12 rounded-md w-full bg-white flex justify-between items-center p-5 mt-5 text-gray-500 text-sm">
         Wallet balance
-        <>
+        <div>
           0.489 ETH
           <button className="ml-3">
             <Arrow />
           </button>
-        </>
+        </div>
       </div>
       <OverviewSection title="NFTs" items={nftItems} />
       <OverviewSection title="Saved Searches" items={savedSearches} />

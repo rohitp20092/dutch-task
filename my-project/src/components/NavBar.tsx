@@ -17,24 +17,33 @@ import { MenuItem } from "../utils/types";
 
 const NavBar: React.FC = () => {
   return (
-    <div className="container mx-auto flex flex-col bg-white border-b shadow-black p-10">
-      <nav className="w-full h-[60px] bg-[#fff] p-[10px]">
+    <div className="mx-auto flex flex-col bg-white border-b shadow-black px-6 pb-6">
+      <nav className="w-full h-[60px] bg-[#fff]">
         <div className="flex flex-row items-center justify-between">
           <Image src={logoImg} className="float-left mr-4" alt="logo" />
           <ul className="flex justify-center mt-6">
             {menuItems.map((menuItem: MenuItem) => (
               <li
                 key={menuItem.label}
-                className="flex flex-col items-center item mx-5 font-light hover:font-semibold"
+                className="flex flex-col items-center item mx-4 font-light hover:font-semibold"
               >
                 <Link
-                  className="text-base font-bold text-black"
+                  className={`text-lg ${
+                    menuItem.label === "Dashboard"
+                      ? "font-bold text-black"
+                      : "font-normal text-gray-500"
+                  }`}
                   href={menuItem.href}
                 >
                   {menuItem.label}
                   {menuItem.comingSoon && (
+                    <span className="text-red-600 text-xs block font-light">
+                      Coming Soon
+                    </span>
+                  )}
+                  {menuItem.label === "Dashboard" && (
                     <span className="text-red-600 text-xl block text-center leading-3">
-                      .
+                      &bull;
                     </span>
                   )}
                 </Link>
@@ -63,18 +72,20 @@ const NavBar: React.FC = () => {
               </span>
             </div>
           </div>
-          <Button className="p-[5px] bg-green-100 mx-5 text-xs h-7 text-green-400 w-[70px] stausBTN flex items-center justify-center rounded">
+          <Button className="py-[5px] px-10 bg-green-200 mx-5 text-xs h-7 font-bold text-green-600 w-[70px] stausBTN flex items-center justify-center rounded">
             <strong className="mr-2 text-2xl">&bull;</strong> Status
           </Button>
-          <Link href="#" className="ml-2 mx-5">
-            <Bell />
-          </Link>
-          <Link href="#" className="ml-2 mx-5">
-            <Folder />
-          </Link>
-          <Link href="#" className="ml-2 mx-5">
-            <User />
-          </Link>
+          <div className="flex flex-row justify-end">
+            <Link href="#" className="ml-2 mr-4">
+              <Bell />
+            </Link>
+            <Link href="#" className="ml-2 mr-4">
+              <Folder />
+            </Link>
+            <Link href="#" className="ml-2">
+              <User />
+            </Link>
+          </div>
         </div>
       </nav>
       <CategoryCard />

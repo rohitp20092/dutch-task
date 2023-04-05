@@ -1,19 +1,25 @@
 import React from "react";
 import Image from "next/image";
-import OverView from "@components/components/OverView";
 import Calendar from "@components/common/Icons/Calendar";
 import BarChart from "@components/common/Icons/BarChart";
 import Check from "@components/common/Icons/Check";
 import Clock from "@components/common/Icons/Clock";
 import { events } from "../utils/constants";
+import { Event } from "../utils/types";
+import Input from "@components/shared/Input";
+import Button from "@components/shared/Button";
+import OverviewCard from "./Overview";
 
-const Events: React.FC = () => {
+const EventCard: React.FC = () => {
   return (
     <div className="container mx-auto mt-5 grid grid-cols-3 gap-4 px-10">
       <div className="col-span-2">
         <h5 className="text-2xl text-slate-400">Events</h5>
-        {events?.map((item: any) => (
-          <div className="w-full border rounded-md mt-4 grid grid-cols-3 gap-4 py-6 relative z-50 bg-white">
+        {events?.map((item: Event, index: number) => (
+          <div
+            key={index}
+            className="w-full border rounded-md mt-4 grid grid-cols-3 gap-4 py-6 relative z-50 bg-white"
+          >
             <div className="absolute blur-lg opacity-50 w-full h-full text-center top-0 z-0">
               <Image
                 src={item.icon}
@@ -50,15 +56,13 @@ const Events: React.FC = () => {
                 🍎🍌🍍The Fruit Salad Game🍆🥦🥕
               </div>
               <div className="my-4 mx-5">
-                <span className="text-3xl font-bold mr-2">{item.heading}</span>{" "}
-                x 100
+                <span className="text-3xl font-bold mr-2">{item.heading}</span>x
+                100
               </div>
               <div className="my-4 mx-5 text-base">
                 Wallet Transactions:
                 <strong className="ml-3 mr-2">{item.success}</strong>
-                Success <strong className="ml-3 mr-2">
-                  {item.processing}
-                </strong>{" "}
+                Success <strong className="ml-3 mr-2">{item.processing}</strong>
                 Processing
                 <strong className="ml-3 mr-2">{item.failed}</strong> Failed
               </div>
@@ -66,29 +70,32 @@ const Events: React.FC = () => {
                 <div className="h-5 bg-red-600 w-64 rounded-full"></div>
               </div>
               <div className="mt-4 mx-5">
-                <button className="rounded-md text-white w-32 h-10 text-base font-bold bg-black mr-2">
+                <Button className="rounded-md text-white w-32 h-10 text-base font-bold bg-black mr-2">
                   {item.details}
-                </button>
+                </Button>
                 {item.complete && (
                   <>
-                    <button className="rounded-md w-20 h-10 text-base border-2 border-black mr-2">
+                    <Button className="rounded-md w-20 h-10 text-base border-2 border-black mr-2">
                       Cancel
-                    </button>
-                    <input type="checkbox" className="checked:bg-black mr-2" />
+                    </Button>
+                    <Input
+                      id="report"
+                      name="report"
+                      type="checkbox"
+                      className="checked:bg-black mr-2"
+                    />
                     <span className="text-base">Receive report on email</span>
                   </>
                 )}
               </div>
             </div>
-            <div>
-              <Image className="mt-10" alt="event Image" src={item.icon} />
-            </div>
+            <Image className="mt-10" alt="event Image" src={item.icon} />
           </div>
         ))}
       </div>
-      <OverView />
+      <OverviewCard />
     </div>
   );
 };
 
-export default Events;
+export default EventCard;

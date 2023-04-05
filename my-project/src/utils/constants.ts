@@ -5,37 +5,7 @@ import groupIcon from "../../assets/Group.svg";
 import groupIcon1 from "../../assets/Group1.svg";
 import eventImg1 from "../../assets/eventImage.gif";
 import eventImg2 from "../../assets/eventImage2.gif";
-
-interface OverviewItemType {
-    label: string;
-    value: number | string;
-}
-
-interface Event {
-    complete: boolean;
-    icon: string | any;
-    airdrop: string;
-    harvest: string;
-    date: string;
-    heading: string;
-    details: string;
-    cancel: string;
-    success: number;
-    processing: number;
-    failed: number;
-}
-
-interface MenuItem {
-    label: string;
-    href: string;
-    comingSoon?: boolean;
-}
-
-interface Icons {
-    src: string;
-    alt: string;
-    color: string;
-}
+import { OverviewItemType, Event, MenuItem, Icons } from '../utils/types'
 
 export const nftItems: OverviewItemType[] = [
     { label: "NFT items", value: 187 },

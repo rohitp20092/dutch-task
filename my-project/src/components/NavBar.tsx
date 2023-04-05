@@ -2,7 +2,7 @@ import React from "react";
 //next
 import Image from "next/image";
 //components
-import Card from "@components/components/Card";
+import CategoryCard from "@components/components/CategoryCard";
 import Bell from "@components/common/Icons/Bell";
 import Folder from "@components/common/Icons/Folder";
 import User from "@components/common/Icons/User";
@@ -10,6 +10,10 @@ import Search from "@components/common/Icons/Search";
 import { menuItems } from "../utils/constants";
 //image
 import logoImg from "../../assets/logo.svg";
+import Link from "next/link";
+import Input from "@components/shared/Input";
+import Button from "@components/shared/Button";
+import { MenuItem } from "../utils/types";
 
 const NavBar: React.FC = () => {
   return (
@@ -18,12 +22,12 @@ const NavBar: React.FC = () => {
         <div className="flex flex-row items-center justify-between">
           <Image src={logoImg} className="float-left mr-4" alt="logo" />
           <ul className="flex justify-center mt-6">
-            {menuItems.map((menuItem) => (
+            {menuItems.map((menuItem: MenuItem) => (
               <li
                 key={menuItem.label}
                 className="flex flex-col items-center item mx-5 font-light hover:font-semibold"
               >
-                <a
+                <Link
                   className="text-base font-bold text-black"
                   href={menuItem.href}
                 >
@@ -33,7 +37,7 @@ const NavBar: React.FC = () => {
                       .
                     </span>
                   )}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -43,7 +47,7 @@ const NavBar: React.FC = () => {
                 <Search />
               </span>
             </div>
-            <input
+            <Input
               type="text"
               name="price"
               id="price"
@@ -59,21 +63,21 @@ const NavBar: React.FC = () => {
               </span>
             </div>
           </div>
-          <button className="p-[5px] bg-green-100 mx-5 text-xs h-7 text-green-400 w-[70px] stausBTN flex items-center justify-center rounded">
+          <Button className="p-[5px] bg-green-100 mx-5 text-xs h-7 text-green-400 w-[70px] stausBTN flex items-center justify-center rounded">
             <strong className="mr-2 text-2xl">&bull;</strong> Status
-          </button>
-          <a href="#" className="ml-2 mx-5">
+          </Button>
+          <Link href="#" className="ml-2 mx-5">
             <Bell />
-          </a>
-          <a href="#" className="ml-2 mx-5">
+          </Link>
+          <Link href="#" className="ml-2 mx-5">
             <Folder />
-          </a>
-          <a href="#" className="ml-2 mx-5">
+          </Link>
+          <Link href="#" className="ml-2 mx-5">
             <User />
-          </a>
+          </Link>
         </div>
       </nav>
-      <Card />
+      <CategoryCard />
     </div>
   );
 };

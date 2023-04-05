@@ -1,13 +1,13 @@
 import React from "react";
 //components
-import Events from "@components/components/Events";
+import EventCard from "@components/components/EventCard";
 import NavBar from "@components/components/NavBar";
 
 const Home: React.FC = () => {
   return (
     <div className="bg-gray-50 w-full">
       <NavBar />
-      <Events />
+      <EventCard />
     </div>
   );
 };
